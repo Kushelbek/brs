@@ -1,0 +1,11 @@
+/**
+ * Cotonti Banners Module
+ * CSS for admin template
+ *
+ * @package Banners
+ * @author Kalnov Alexey    <kalnovalexey@yandex.ru>
+ * @copyright Portal30 Studio http://portal30.ru
+ */
+.admin-banner-preview img{
+    max-height: 200px;
+}

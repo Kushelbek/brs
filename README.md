@@ -1,2 +1,7 @@
-# brs
-Banner rotation module with statistics for Cotonti v.2
+Banners
+=======
+
+Banner rotation plugin with statistics for Cotonti
+
+
+Russian documentation: http://portal30.ru/sozdanie-internet-sajtov/free-scripts/cotonti-banners
