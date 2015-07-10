@@ -290,6 +290,24 @@ class brs_model_Banner extends Som_Model_Abstract {
         return parent::afterUpdate();
     }
 
+    protected function afterSave() {
+        global $structure;
+
+        // Обновить структуру
+        $count = brs_model_Banner::count(array(array('category', $this->_data['category'])));
+        static::$_db->update(cot::$db->structure, array('structure_count' => $count),
+            "structure_area='brs' AND structure_code=?", $this->_data['category']);
+
+        if(!empty($this->_oldData['category']) && !empty($structure['brs'][$this->_oldData['category']])) {
+            $count = brs_model_Banner::count(array(array('category', $this->_oldData['category'])));
+            static::$_db->update(cot::$db->structure, array('structure_count' => $count),
+                "structure_area='brs' AND structure_code = ?", $this->_oldData['category']);
+        }
+        cot::$cache && cot::$cache->db->remove('structure', 'system');
+
+        return parent::afterSave();
+    }
+
     protected function beforeDelete(){
 
         $id = $this->_data['id'];
@@ -305,6 +323,11 @@ class brs_model_Banner extends Som_Model_Abstract {
         return parent::beforeDelete();
     }
 
+    protected function afterDelete() {
+        $count = brs_model_Banner::count(array(array('category', $this->_data['category'])));
+        static::$_db->update(cot::$db->structure, array('structure_count' => $count),
+            "structure_area='brs' AND structure_code=?", $this->_data['category']);
+    }
 
     // === Методы для работы с шаблонами ===
     /**
