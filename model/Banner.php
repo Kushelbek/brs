@@ -327,6 +327,8 @@ class brs_model_Banner extends Som_Model_Abstract {
         $count = brs_model_Banner::count(array(array('category', $this->_data['category'])));
         static::$_db->update(cot::$db->structure, array('structure_count' => $count),
             "structure_area='brs' AND structure_code=?", $this->_data['category']);
+
+        cot::$cache && cot::$cache->db->remove('structure', 'system');
     }
 
     // === Методы для работы с шаблонами ===
