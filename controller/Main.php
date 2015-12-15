@@ -45,7 +45,7 @@ class brs_controller_Main{
 
         // Пока выбыраем баненры по одному,
         // @todo оптимизировать
-        $condition = array(
+        $baseCondition = array(
             array('published', 1),
             array('publish_up', date('Y-m-d H:i:s', cot::$sys['now']), '<='),
             array('SQL', "publish_down >='".date('Y-m-d H:i:s', cot::$sys['now'])."' OR publish_down ='0000-00-00 00:00:00'"),
@@ -68,6 +68,7 @@ class brs_controller_Main{
                 continue;
             }
 
+            $condition =  $baseCondition;
             $condition[] = array('category', $cat);
 
             $client = false;

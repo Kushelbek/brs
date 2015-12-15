@@ -268,6 +268,13 @@ class brs_model_Banner extends Som_Model_Abstract {
     protected function afterInsert(){
         cot_log("Added new banner # {$this->_data['id']} - {$this->_data['title']}", 'adm');
 
+        // Обновить структуру
+        $count = brs_model_Banner::count(array(array('category', $this->_data['category'])));
+        static::$_db->update(cot::$db->structure, array('structure_count' => $count),
+            "structure_area='brs' AND structure_code=?", $this->_data['category']);
+
+        cot::$cache && cot::$cache->db->remove('structure', 'system');
+
         return parent::afterInsert();
     }
 
@@ -285,7 +292,23 @@ class brs_model_Banner extends Som_Model_Abstract {
     }
 
     protected function afterUpdate(){
+        global $structure;
+
         cot_log("Edited banner # {$this->_data['id']} - {$this->_data['title']}", 'adm');
+
+        // Обновить структуру, если она изменилась
+        if(!empty($this->_oldData['category'])) {
+            $count = brs_model_Banner::count(array(array('category', $this->_data['category'])));
+            static::$_db->update(cot::$db->structure, array('structure_count' => $count),
+                "structure_area='brs' AND structure_code=?", $this->_data['category']);
+
+            if(!empty($structure['brs'][$this->_oldData['category']])) {
+                $count = brs_model_Banner::count(array(array('category', $this->_oldData['category'])));
+                static::$_db->update(cot::$db->structure, array('structure_count' => $count),
+                    "structure_area='brs' AND structure_code = ?", $this->_oldData['category']);
+            }
+            cot::$cache && cot::$cache->db->remove('structure', 'system');
+        }
 
         return parent::afterUpdate();
     }
@@ -305,6 +328,15 @@ class brs_model_Banner extends Som_Model_Abstract {
         return parent::beforeDelete();
     }
 
+    protected function afterDelete() {
+
+        // Обновить структуру
+        $count = brs_model_Banner::count(array(array('category', $this->_data['category'])));
+        static::$_db->update(cot::$db->structure, array('structure_count' => $count),
+            "structure_area='brs' AND structure_code=?", $this->_data['category']);
+
+        cot::$cache && cot::$cache->db->remove('structure', 'system');
+    }
 
     // === Методы для работы с шаблонами ===
     /**
