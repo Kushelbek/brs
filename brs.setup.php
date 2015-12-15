@@ -13,7 +13,7 @@ Lock_guests=W12345A
 Auth_members=R
 Lock_members=A
 Recommends_modules=
-Requires_plugins=cotonti-lib
+Requires_plugins=cotontilib
 Recommends_plugins=
 [END_COT_EXT]
 
