@@ -555,6 +555,7 @@ class brs_model_Banner extends Som_Model_Abstract {
     }
 
     public static function fieldList(){
+        $nullDate	= date('Y-m-d H:i:s', 0);   // 1970-01-01 00:00:00
         $fields = array (
             'id' =>
                 array (
@@ -646,13 +647,13 @@ class brs_model_Banner extends Som_Model_Abstract {
             'publish_up' =>
                 array (
                     'type' => 'datetime',
-                    'default' => '0000-00-00 00:00:00',
+                    'default' => $nullDate,
                     'description' => cot::$L['brs_publish_up'],
                 ),
             'publish_down' =>
                 array (
                     'type' => 'datetime',
-                    'default' => '0000-00-00 00:00:00',
+                    'default' => $nullDate,
                     'description' => cot::$L['brs_publish_down'],
                 ),
             'imptotal' =>
@@ -688,7 +689,7 @@ class brs_model_Banner extends Som_Model_Abstract {
                     'link'        =>
                         array(
                             'model'    => 'brs_model_Client',
-                            'relation' => SOM::TO_ONE_NULL,
+                            'relation' => Som::TO_ONE_NULL,
                             'label'    => 'title',
                         ),
                 ),

@@ -54,11 +54,12 @@ class brs_controller_Widget {
                 $cats = array_unique($cats);
             }
         }
+        $nullDate	= date('Y-m-d H:i:s', 0);   // 1970-01-01 00:00:00
 
         $condition = array(
             array('published', 1),
             array('publish_up', date('Y-m-d H:i:s', cot::$sys['now']), '<='),
-            array('SQL', "publish_down >='".date('Y-m-d H:i:s', cot::$sys['now'])."' OR publish_down ='0000-00-00 00:00:00'"),
+            array('SQL', "publish_down >='".date('Y-m-d H:i:s', cot::$sys['now'])."' OR publish_down ='{$nullDate}'"),
             array('SQL', "imptotal = 0 OR impressions < imptotal"),
         );
         if(count($cats) > 0){

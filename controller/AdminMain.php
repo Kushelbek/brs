@@ -175,6 +175,8 @@ class brs_controller_AdminMain
             unset($_POST['id']);
             $data = $_POST;
 
+            $nullDate	= date('Y-m-d H:i:s', 0);   // 1970-01-01 00:00:00
+            
             // Импортируем файл
             $file = brs_importFile('file', $item->file);
             $delFile = cot_import('del_file', 'P', 'BOL') ? 1 : 0;
@@ -185,14 +187,14 @@ class brs_controller_AdminMain
             if(!empty($data['publish_up'])) {
                 $data['publish_up'] = date('Y-m-d H:i:s', $data['publish_up']);
             } else {
-                $data['publish_up'] = '0000-00-00 00:00:00';
+                $data['publish_up'] = $nullDate;
             }
 
             $data['publish_down'] = cot_import_date('publish_down');
             if(!empty($data['publish_down'])) {
                 $data['publish_down'] = date('Y-m-d H:i:s', $data['publish_down']);
             } else {
-                $data['publish_down'] = '0000-00-00 00:00:00';
+                $data['publish_down'] = $nullDate;
             }
 
             $bannerType = cot_import('banner_type', 'P', 'INT');
