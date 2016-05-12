@@ -3,10 +3,10 @@
 [BEGIN_COT_EXT]
 Name=Banners
 Description=Banner rotation with statistics
-Version=2.0.0
-Date=July 01, 2015
+Version=2.0.1
+Date=May 12, 2016
 Author=Kalnov Alexey
-Copyright=(c) Portal30 studio 2011-2015
+Copyright=(c) 2011-2016 Portal30 Studio http://portal30.ru
 Notes=
 Auth_guests=R
 Lock_guests=W12345A
@@ -34,5 +34,5 @@ defined('COT_CODE') or die('Wrong URL.');
  *
  * @package Banners
  * @author Kalnov Alexey    <kalnovalexey@yandex.ru>
- * @copyright 2011-2015 Portal30 Studio http://portal30.ru
+ * @copyright 2011-2016 Portal30 Studio http://portal30.ru
  */

@@ -57,8 +57,8 @@ if(empty($GLOBALS['db_banners'])) {
  * @property bool $trackImpressions   Вычисленное значение: вести ежедневную статистику показов?
  *
  */
-class brs_model_Banner extends Som_Model_Abstract {
-
+class brs_model_Banner extends Som_Model_ActiveRecord
+{
     // === Типы баннеров ===
     const TYPE_UNKNOWN = 0;
     const TYPE_IMAGE = 1;
@@ -82,6 +82,7 @@ class brs_model_Banner extends Som_Model_Abstract {
 
     /**
      * Static constructor
+     * @param string $db Data base connection config name
      */
     public static function __init($db = 'db'){
         static::$_tbname = cot::$db->banners;

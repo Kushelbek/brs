@@ -27,8 +27,8 @@ if(empty($GLOBALS['db_banner_clients'])) {
  * @property string     $track_impressions
  *
  */
-class brs_model_Client extends Som_Model_Abstract {
-
+class brs_model_Client extends Som_Model_ActiveRecord
+{
     // === Типы оплаты ===
     const PURCHASE_DEFAULT = -1;
     const PURCHASE_UNLIMITED = 1;
@@ -49,6 +49,7 @@ class brs_model_Client extends Som_Model_Abstract {
 
     /**
      * Static constructor
+     * @param string $db Data base connection config name
      */
     public static function __init($db = 'db'){
         static::$_tbname = cot::$db->banner_clients;
