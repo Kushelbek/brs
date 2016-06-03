@@ -11,7 +11,6 @@
  */
 class brs_controller_AdminMain
 {
-
     /**
      * Панель управления
      * Список баннеров
@@ -199,6 +198,8 @@ class brs_controller_AdminMain
 
             $bannerType = cot_import('banner_type', 'P', 'INT');
             unset($data['banner_type']);
+
+            if(isset($data['client'])) $data['client'] = (int)$data['client'];
 
             // Отключим html-фильтры для установк произвольного кода:
             $tmp = $cot_import_filters['HTM'] = array();
