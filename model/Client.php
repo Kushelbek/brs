@@ -13,9 +13,9 @@ if(empty($GLOBALS['db_banner_clients'])) {
  * @author Kalnov Alexey    <kalnovalexey@yandex.ru>
  * @copyright  © Portal30 Studio http://portal30.ru 2011-2013
  *
- * @method static brs_model_Client getById($pk);
+ * @method static brs_model_Client getById($pk, $staticCache = true);
  * @method static brs_model_Client fetchOne($conditions = array(), $order = '')
- * @method static brs_model_Client[] find($conditions = array(), $limit = 0, $offset = 0, $order = '');
+ * @method static brs_model_Client[] findByCondition($conditions = array(), $limit = 0, $offset = 0, $order = '');
  *
  * @property int        $id
  * @property string     $title

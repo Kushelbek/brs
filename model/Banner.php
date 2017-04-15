@@ -13,9 +13,9 @@ if(empty($GLOBALS['db_banners'])) {
  * @author Kalnov Alexey    <kalnovalexey@yandex.ru>
  * @copyright  © Portal30 Studio http://portal30.ru
  *
- * @method static brs_model_Banner getById($pk);
+ * @method static brs_model_Banner getById($pk, $staticCache = true);
  * @method static brs_model_Banner fetchOne($conditions = array(), $order = '')
- * @method static brs_model_Banner[] find($conditions = array(), $limit = 0, $offset = 0, $order = '');
+ * @method static brs_model_Banner[] findByCondition($conditions = array(), $limit = 0, $offset = 0, $order = '');
  *
  * @property int                $id
  * @property int                $type

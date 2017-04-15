@@ -6,6 +6,8 @@
  * @author Kalnov Alexey    <kalnovalexey@yandex.ru>
  * @copyright (c) Portal30 Studio http://portal30.ru
  */
+
+if(class_exists('cpanel')) cpanel::$useDefaultPanel = false;
 ?>
 <div class="button-toolbar">
     <a title="<?=cot::$L['Configuration']?>" href="<?=cot_url('admin', 'm=config&n=edit&o=module&p=brs')?>"

@@ -84,7 +84,7 @@ class brs_controller_Main{
             $ord = "lastimp ASC";
             if($order == 'rand') $ord = 'RAND()';
 
-//            $banner = brs_model_Banner::find($condition, 1, 0, $ord);
+//            $banner = brs_model_Banner::findByCondition($condition, 1, 0, $ord);
             $banner = brs_model_Banner::fetchOne($condition, $ord);
             if(empty($banner)){
                 $ret['items'][$pid] = '';

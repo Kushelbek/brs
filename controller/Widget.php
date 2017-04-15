@@ -71,7 +71,7 @@ class brs_controller_Widget {
         $ord = "lastimp ASC";
         if($order == 'rand') $ord = 'RAND()';
 
-        $items = brs_model_Banner::find($condition, $cnt, 0, $ord);
+        $items = brs_model_Banner::findByCondition($condition, $cnt, 0, $ord);
 
         if(!$items) return '';
 

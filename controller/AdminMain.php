@@ -70,7 +70,7 @@ class brs_controller_AdminMain
         }
 
         $totallines = brs_model_Banner::count($condition);
-        $items = brs_model_Banner::find($condition, $maxrowsperpage, $d, $sort.' '.$way);
+        $items = brs_model_Banner::findByCondition($condition, $maxrowsperpage, $d, $sort.' '.$way);
 
         $pagenav = cot_pagenav('admin', $urlParams, $d, $totallines, $maxrowsperpage, 'd', '', true);
 

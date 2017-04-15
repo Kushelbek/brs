@@ -37,7 +37,7 @@ class brs_controller_AdminClient
 
         $condition = array();
 
-        $items = brs_model_Client::find($condition, $maxrowsperpage, $d, $sort.' '.$way);
+        $items = brs_model_Client::findByCondition($condition, $maxrowsperpage, $d, $sort.' '.$way);
         if(!$items) $items = array();
         $totallines = brs_model_Client::count($condition);
 
